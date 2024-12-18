@@ -6,9 +6,9 @@
 ❗️각자 본인이 답변한 내용을 wiki에 다음날까지 정리합니다. <br>
 
 ## 🗓️ Week 링크
-| Week N | 범위 | wiki |
-|:--:|:--:|:--:|
-| 1 | 레벨 1.1 - 1.2 |  |
+| Week N | 범위 (wiki 링크) |
+|:--:|:--:|
+| 1 | [레벨 1.1 - 1.2](https://github.com/TodayStudy-iOS/Interview/wiki/%F0%9F%A9%B5-%EC%A3%BC%EC%B0%A8%EB%B3%84-%EC%95%84%EC%B9%B4%EC%9D%B4%EB%B8%8C#1-swift%EC%97%90%EC%84%9C-%EC%98%B5%EC%85%94%EB%84%90optional%EC%9D%B4%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B4%EB%A9%B0-%EC%96%B8%EC%A0%9C-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%95%BC-%ED%95%98%EB%82%98%EC%9A%94) |
 
 ## 😶 스터디원
 | 권승용 | 김형석 | 김민송 | 이명지 | 
