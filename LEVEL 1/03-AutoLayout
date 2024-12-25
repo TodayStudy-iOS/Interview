@@ -1,0 +1,54 @@
+issue #3
+
+## 03. Auto Layout
+### Auto Layout을 사용하는 이유와 장점은 무엇인가요?
+Auto Layout은 iOS와 macOS에서 사용되는 적응형 인터페이스를 구축하기 위한 핵심 기술입니다.
+- 다양한 화면 크기와 방향에 대응 가능
+- 국제화(다국어) 지원 용이
+- 동적 콘텐츠 대응 가능
+- 유지보수 용이성
+
+### 제약 조건(Constraints)의 우선순위(Priority)는 어떻게 동작하나요?
+우선순위는 0부터 1000 사이의 값을 가지며, Auto Layout 엔진이 제약 조건을 해결할 때 어떤 제약 조건을 우선적으로 적용할지 결정하는 기준이 됩니다.
+제약 조건의 우선순위:
+- 1000 (Required): 반드시 만족해야 함
+- 750 (High): 높은 우선순위
+- 500 (Medium): 중간 우선순위
+- 250 (Low): 낮은 우선순위
+
+### Intrinsic Content Size란 무엇이며, 어떻게 활용되나요?
+Intrinsic Content Size는 뷰가 자신의 콘텐츠를 기반으로 계산된 자연스러운 크기를 의미합니다. 이는 개발자가 명시적으로 크기를 지정하지 않아도 뷰가 자동으로 적절한 크기를 결정할 수 있게 해줍니다.
+
+#### 구체적인 예시
+UILabel: 텍스트의 폰트, 길이에 따라 자동으로 너비와 높이 결정
+UIImageView: 이미지의 원본 크기를 기본 크기로 사용
+UIButton: 타이틀 텍스트와 이미지의 크기에 맞춰 자동 조정
+UISwitch: 시스템에서 정의된 고정된 크기 사용
+
+#### Content Hugging과 Compression Resistance 심화
+각 뷰의 Content Hugging과 Compression Resistance는 1-1000 사이의 우선순위 값을 가지며, 기본값은 보통 250입니다.
+##### Content Hugging (줄어듦 방지)
+우선순위가 높을수록 뷰는 고유 크기를 유지하려 함
+기본값보다 높은 우선순위를 설정하여 뷰가 늘어나는 것을 방지
+```
+label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+```
+높은 우선순위: 뷰가 자신의 고유 크기를 최대한 유지하려 함
+낮은 우선순위: 다른 뷰에 의해 확장될 가능성이 높아짐
+
+##### Compression Resistance (잘림 방지)
+뷰가 최소 크기 이하로 줄어드는 것을 막음
+텍스트의 일부가 생략되거나 잘리는 것을 방지
+```
+textField.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+```
+높은 우선순위: 뷰가 최소 크기 이하로 줄어드는 것을 방지
+낮은 우선순위: 다른 뷰를 위해 크기가 조정될 수 있음
+
+### Ambiguous Layout과 Unsatisfiable Constraints는 무엇이며, 어떻게 해결하나요?
+Ambiguous Layout은 제약 조건이 모호한 경우입니다. 설령, 너비와 높이만 설정하고, x,y 좌표에 대한 제약을 설정하지 않았을 경우 수평위치가 모호한 레이아웃이 됩니다.
+Unsatisfiable Constraints는 서로 상충되는 제약조건이 존재하여 동시에 만족시킬 수 없는 상황을 의미합니다. 이는 너비 제약 2개가 서로 다른 값으로 설정되어 있는 상황을 예시로 들 수 있습니다.
+해결방법
+1. 우선순위를 조정하는 방법이 있습니다. 이의 경우, 우선순위가 높은 제약조건만 수행합니다.
+2. 레이아웃 문제를 시각적으로 분석할 수 있는 Debug View Hierarchy 기능을 사용해 충돌하는 제약 조건을 식별하고 우선순위 조정하거나 변경해 해결이 가능합니다.
+Debug View Hierarchy: 제약조건 시각화, 뷰 계층 구조 탐색, 런타임에서의 프레임과 바운드까지 확인이 가능함.
